@@ -23,39 +23,38 @@ pipeline {
 
             }
         }
-    }
-    stages {
-        stage('git clone') {
-            steps {
-                echo 'Building........'
+    
+            stage('git clone') {
+                steps {
+                    echo 'Building........'
+                }
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing.......'
+            stage('Test') {
+                steps {
+                    echo 'Testing.......'
+                }
             }
-        }
-        stage('Deploy') {
-            steps {
-                sh """
-                    echo "Hello I am from shell script"
-                    echo "$GREETING"
-                    sleep 20
+            stage('Deploy') {
+                steps {
+                    sh """
+                        echo "Hello I am from shell script"
+                        echo "$GREETING"
+                        sleep 20
+                        """
+                }
+            }
+            stage('check params') {
+                steps{
+                    sh """
+                        echo "Hello ${params.PERSON}"
+                        echo "Biography: ${params.BIOGRAPHY}"
+                        echo "Toggle: ${params.TOGGLE}"
+                        echo "choice: ${params.CHOICE}"
+                        echo "Password: ${params.PASSWORD}"
+                        echo "trigger is added"
                     """
+                }
             }
-        }
-        stage('check params') {
-            steps{
-                sh """
-                    echo "Hello ${params.PERSON}"
-                    echo "Biography: ${params.BIOGRAPHY}"
-                    echo "Toggle: ${params.TOGGLE}"
-                    echo "choice: ${params.CHOICE}"
-                    echo "Password: ${params.PASSWORD}"
-                    echo "trigger is added"
-                """
-            }
-        }
     }
     // post build
     post {
