@@ -13,8 +13,8 @@ pipeline {
         disableConcurrentBuilds()
     }
     stages{
-        stage{
-            steps('Get Version'){
+        stage('Get Version'){
+            steps{
                 script{
                     def appVersion = readJSON file; 'package.json'
                     packageVersion = appVersion.version 
