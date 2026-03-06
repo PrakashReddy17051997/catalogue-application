@@ -24,10 +24,14 @@ pipeline {
             }
         }
     
-            stage('git clone') {
-                steps {
-                    echo 'Building........'
-                }
+            stage('Install Dependencies'){
+                steps{
+                    sh """
+                        npm install
+                    """
+                
+
+            }
             }
             stage('Test') {
                 steps {
