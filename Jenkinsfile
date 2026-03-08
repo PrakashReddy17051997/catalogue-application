@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         packageVersion = ''
-        nexusUrl = 'http://172.31.64.36:8081/repository/catalogue/'
+        nexusUrl = '172.31.64.36:8081'
 
     }
     options {
