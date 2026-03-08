@@ -48,10 +48,10 @@ pipeline {
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         nexusUrl: "${nexusUrl}",
-                        groupID:'com.roboshop',
+                        groupId: 'com.roboshop',
                         version: "${packageVersion}",
                         repository: 'catalogue',
-                        credentailsId: 'nexus-auth',
+                        credentialsId: 'nexus-auth',
                         artifacts: [
                             [artifactId: 'catalogue',
                             calssifier: '',
