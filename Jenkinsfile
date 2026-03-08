@@ -32,6 +32,15 @@ pipeline {
 
             }
             }
+            stage('Build'){
+                steps{
+                    sh """
+                    ls -la
+                    zip -q -r catalogue.zip ./* -x ".git" -x ".zip"
+                    ls -ltr
+                    """
+                }
+            }
             stage('Test') {
                 steps {
                     echo 'Testing.......'
@@ -63,6 +72,7 @@ pipeline {
     post {
         always{
             echo 'We Will always Win again!'
+            deleteDir()
         }
         failure {
             echo 'failure occured, inform the concerned teams over slack'
