@@ -59,7 +59,7 @@ pipeline {
                             type: 'zip']
                         ]
                     )
-                    echo 
+                    
                 }
             }
             stage('Deploy') {
