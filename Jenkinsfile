@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         packageVersion = ''
+        nexusUrl = 'http://172.31.64.36:8081/repository/catalogue/'
 
     }
     options {
@@ -41,15 +42,30 @@ pipeline {
                     """
                 }
             }
-            stage('Test') {
+            stage('Publish Artifact') {
                 steps {
-                    echo 'Testing.......'
+                    nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${nexusUrl}",
+                        groupID:'com.roboshop',
+                        version: "${packageVersion}",
+                        repository: 'catalogue',
+                        credentailsId: 'nexus-auth',
+                        artifacts: [
+                            [artifactId: 'catalogue',
+                            calssifier: '',
+                            file: 'catalogue.zip',
+                            type: 'zip']
+                        ]
+                    )
+                    echo 
                 }
             }
             stage('Deploy') {
                 steps {
                     sh """
-                        echo "Hello I am from shell script"
+                        echo "Hello I am deployment completed to nexus"
                         echo "$GREETING"
                         sleep 20
                         """
