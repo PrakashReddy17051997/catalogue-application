@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         packageVersion = ''
-        nexusUrl = '172.31.64.75:8081'
+        nexusUrl = '172.31.2.234:8081'
 
     }
     options {
@@ -62,13 +62,16 @@ pipeline {
             }
         }
             stage('Deploy') {
-                steps {
-                    sh """
-                        echo "Hello I am deployment completed to nexus"
-                        echo "$GREETING"
-                        sleep 20
-                        """
-                }
+               steps{
+                    script{
+                        def params = [
+                        string(name: 'VERSION', value: "$packageVersion"),
+                        string(name: 'environment', value: "dev")
+                        ]
+               
+                        build job: "catalogue-deploy", wait: true, parameters: params
+                        
+                  
             }
           
     }
