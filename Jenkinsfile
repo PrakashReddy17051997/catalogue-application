@@ -13,6 +13,9 @@ pipeline {
         timeout(time: 1, unit:'HOURS')
         disableConcurrentBuilds()
     }
+    parameters{
+        booleanParam(name: 'Deploy', defaultValue:false, description: 'Select deploy if the code pass QA')
+    }
     stages{
         stage('Get Version'){
             steps{
@@ -70,6 +73,9 @@ pipeline {
             }
         }
             stage('Deploy') {
+                when{
+                    params.Deploy = true
+                }
                steps{
                     script{
                         def params = [
