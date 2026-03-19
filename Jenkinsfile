@@ -39,7 +39,7 @@ pipeline {
             }
             stage('Unit Test'){
                 steps{
-                    shh """
+                    sh """
                         sonar-scanner
                     """
                 }
