@@ -71,8 +71,7 @@ pipeline {
                     ]
                 )
             }
-        }
-        stage('Deploy') {
+            stage('Deploy') {
             when {
                 expression{
                     params.Deploy == 'true'
@@ -89,6 +88,8 @@ pipeline {
                     
                 
         }
+        }
+        
           
     }
     // post build
