@@ -103,7 +103,7 @@ pipeline {
         success {
             echo 'Confragulations on success build'
         }
-        
+    }
     }
     
 
