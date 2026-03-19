@@ -32,6 +32,14 @@ pipeline {
                     """                
 
             }
+            
+            }
+            stage('Unit Test'){
+                steps{
+                    shh """
+                        sonar-scanner
+                    """
+                }
             }
             stage('Build'){
                 steps{
