@@ -14,7 +14,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     parameters{
-        booleanParam(name: 'Deploy', defaultValue:false, description: 'Select deploy if the code pass QA')
+        booleanParam(name: 'Deploy', defaultValue: false, description: 'Select deploy if the code pass QA')
     }
     stages{
         stage('Get Version'){
