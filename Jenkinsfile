@@ -93,7 +93,7 @@ pipeline {
    
     // post build
     post {
-        always{
+        always {
             echo 'We Will always Win again!'
             deleteDir()
         }
